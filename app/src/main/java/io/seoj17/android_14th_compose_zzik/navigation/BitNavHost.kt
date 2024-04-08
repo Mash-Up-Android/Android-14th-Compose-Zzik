@@ -14,7 +14,7 @@ import io.seoj17.android_14th_compose_zzik.ui.home.compose.HomeRoute
 @Composable
 fun BitNavHost(
     navController: NavHostController,
-    startDestination: String = "",
+    startDestination: String,
     modifier: Modifier = Modifier
 ) {
     NavHost(
@@ -22,19 +22,19 @@ fun BitNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(route = HOME_ROUTE) {
+        composable(route = TopLevelDestination.HOME.route) {
             HomeRoute()
         }
-        composable(route = COIN_INFO_ROUTE) {
+        composable(route = TopLevelDestination.COIN_INFO.route) {
             CoinInfoRoute()
         }
-        composable(route = INVESTMENT_DETAILS_ROUTE) {
+        composable(route = TopLevelDestination.INVESTMENT_DETAILS.route) {
             InvestmentDetailsRoute()
         }
-        composable(route = DEPOSIT_WITHDRAWAL_ROUTE) {
+        composable(route = TopLevelDestination.DEPOSIT_WITHDRAWAL.route) {
             DepositWithdrawalRoute()
         }
-        composable(route = MORE_DETAILS_ROUTE) {
+        composable(route = TopLevelDestination.MORE_DETAILS.route) {
             MoreDetailsRoute()
         }
     }
