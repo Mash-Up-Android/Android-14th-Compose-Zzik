@@ -7,14 +7,18 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import io.seoj17.android_14th_compose_zzik.navigation.BitNavHost
 import io.seoj17.android_14th_compose_zzik.navigation.TopLevelDestination
+import io.seoj17.android_14th_compose_zzik.ui.common.BitBottomBar
 
 @Composable
-fun BitApp(
-
-) {
+fun BitApp() {
     val navController = rememberNavController()
     Scaffold(
-
+        bottomBar = {
+            BitBottomBar(
+                destinations = TopLevelDestination.entries,
+                navController = navController
+            )
+        }
     ) { innerPadding ->
         BitNavHost(
             navController = navController,
