@@ -1,0 +1,41 @@
+package io.seoj17.android_14th_compose_zzik.navigation
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.CoinInfoRoute
+import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.DepositWithdrawalRoute
+import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.InvestmentDetailsRoute
+import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.MoreDetailsRoute
+import io.seoj17.android_14th_compose_zzik.ui.home.compose.HomeRoute
+
+@Composable
+fun BitNavHost(
+    navController: NavHostController,
+    startDestination: String = "",
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = startDestination,
+        modifier = modifier
+    ) {
+        composable(route = HOME_ROUTE) {
+            HomeRoute()
+        }
+        composable(route = COIN_INFO_ROUTE) {
+            CoinInfoRoute()
+        }
+        composable(route = INVESTMENT_DETAILS_ROUTE) {
+            InvestmentDetailsRoute()
+        }
+        composable(route = DEPOSIT_WITHDRAWAL_ROUTE) {
+            DepositWithdrawalRoute()
+        }
+        composable(route = MORE_DETAILS_ROUTE) {
+            MoreDetailsRoute()
+        }
+    }
+}
