@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Android-14th-Compose-Zzik</string>
+
+    <string name="exchange">거래소</string>
+    <string name="info">코인정보</string>
+    <string name="history">투자내역</string>
+    <string name="account">입출금</string>
+    <string name="more">더보기</string>
 </resources>
