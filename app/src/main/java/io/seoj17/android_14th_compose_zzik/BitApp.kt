@@ -8,6 +8,8 @@ import androidx.navigation.compose.rememberNavController
 import io.seoj17.android_14th_compose_zzik.navigation.BitNavHost
 import io.seoj17.android_14th_compose_zzik.navigation.TopLevelDestination
 import io.seoj17.android_14th_compose_zzik.ui.common.BitBottomBar
+import io.seoj17.android_14th_compose_zzik.ui.theme.BitBackgroundColor
+import io.seoj17.android_14th_compose_zzik.ui.theme.BitWhiteColor
 
 @Composable
 fun BitApp() {
@@ -18,7 +20,9 @@ fun BitApp() {
                 destinations = TopLevelDestination.entries,
                 navController = navController
             )
-        }
+        },
+        containerColor = BitBackgroundColor,
+        contentColor = BitWhiteColor
     ) { innerPadding ->
         BitNavHost(
             navController = navController,
