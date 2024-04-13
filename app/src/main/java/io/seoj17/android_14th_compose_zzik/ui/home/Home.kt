@@ -10,12 +10,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import io.seoj17.android_14th_compose_zzik.BottomNav
 import io.seoj17.android_14th_compose_zzik.BottomNavGraph
+import io.seoj17.android_14th_compose_zzik.ui.theme.Background
 
 @Composable
 fun Home() {
     val navController = rememberNavController()
 
     Scaffold(
+        containerColor = Background,
         bottomBar = {
             if (navController.currentBackStackEntryAsState().value?.destination?.route?.startsWith("home") == true) {
                 BottomNav(navController = navController)

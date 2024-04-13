@@ -2,6 +2,7 @@ package io.seoj17.android_14th_compose_zzik
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,8 +29,9 @@ import io.seoj17.android_14th_compose_zzik.ui.home.history.History
 import io.seoj17.android_14th_compose_zzik.ui.home.home.Exchange
 import io.seoj17.android_14th_compose_zzik.ui.home.info.Info
 import io.seoj17.android_14th_compose_zzik.ui.home.more.More
-import io.seoj17.android_14th_compose_zzik.ui.theme.Purple40
-import io.seoj17.android_14th_compose_zzik.ui.theme.PurpleGrey40
+import io.seoj17.android_14th_compose_zzik.ui.theme.BottomNav
+import io.seoj17.android_14th_compose_zzik.ui.theme.Gray
+import io.seoj17.android_14th_compose_zzik.ui.theme.White
 
 @Composable
 fun BottomNav(
@@ -38,7 +41,9 @@ fun BottomNav(
     val currentRoute = navBackStackEntry?.destination?.route
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(BottomNav),
         verticalAlignment = Alignment.CenterVertically
     ) {
         BottomNavTab(
@@ -85,7 +90,7 @@ private fun BottomNavTab(
     currentRoute: String?,
     navController: NavHostController,
 ) {
-    val selectedColor = if (currentRoute == item.route) Purple40 else PurpleGrey40
+    val selectedColor = if (currentRoute == item.route) White else Gray
 
     val onClick = {
         navController.navigate(item.route) {
@@ -100,22 +105,23 @@ private fun BottomNavTab(
     Column(
         modifier = modifier
             .clickable(onClick = onClick)
-            .padding(vertical = 12.dp),
+            .padding(vertical = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
             painter = painterResource(id = item.icon),
             contentDescription = stringResource(id = item.title),
-            modifier = Modifier.size(24.dp),
+            modifier = Modifier.size(20.dp),
             tint = selectedColor,
         )
 
         Text(
             text = stringResource(id = item.title),
+            color = selectedColor,
+            fontSize = 12.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            color = selectedColor,
-            modifier = Modifier.padding(top = 6.dp),
+            modifier = Modifier.padding(top = 4.dp),
         )
     }
 }
