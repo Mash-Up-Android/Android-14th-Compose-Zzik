@@ -26,7 +26,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import io.seoj17.android_14th_compose_zzik.ui.home.account.Account
 import io.seoj17.android_14th_compose_zzik.ui.home.history.History
-import io.seoj17.android_14th_compose_zzik.ui.home.home.Exchange
+import io.seoj17.android_14th_compose_zzik.ui.home.exchange.Exchange
 import io.seoj17.android_14th_compose_zzik.ui.home.info.Info
 import io.seoj17.android_14th_compose_zzik.ui.home.more.More
 import io.seoj17.android_14th_compose_zzik.ui.theme.BottomNav
