@@ -52,7 +52,6 @@ fun Exchange() {
             },
         )
         ExchangeCoinList(
-            selected = selected,
             coinList = coinList,
         )
     }
@@ -124,7 +123,6 @@ fun ExchangeCoinTextBox(
 @Composable
 fun ExchangeCoinList(
     modifier: Modifier = Modifier,
-    selected: Int,
     coinList: List<UpBitCoin>,
     onClick: () -> Unit = {},
 ) {
@@ -158,28 +156,14 @@ fun CoinItem(
                 horizontal = 10.dp,
                 vertical = 5.dp,
             )
+            .height(40.dp)
             .fillMaxWidth()
             .clickable { onClick() },
     ) {
-        Column(
+        CoinNameSector(
             modifier = modifier.weight(0.2f),
-            verticalArrangement = Arrangement.Center,
-        ) {
-            Text(
-                modifier = modifier,
-                textAlign = TextAlign.Center,
-                text = coin.koreanName,
-                fontSize = 14.sp,
-                color = Gray,
-            )
-            Text(
-                modifier = modifier,
-                textAlign = TextAlign.Center,
-                text = coin.englishName,
-                fontSize = 10.sp,
-                color = DarkGray,
-            )
-        }
+            coin = coin,
+        )
         Text(
             modifier = modifier.weight(0.3f),
             textAlign = TextAlign.Center,
@@ -187,31 +171,68 @@ fun CoinItem(
             fontSize = 14.sp,
             color = Blue,
         )
-        Column(
+        CoinChangeSector(
             modifier = modifier.weight(0.2f),
-            verticalArrangement = Arrangement.Center,
-        ) {
-            Text(
-                modifier = modifier,
-                textAlign = TextAlign.Center,
-                text = coin.signedChangeRate.toString() + "%",
-                fontSize = 12.sp,
-                color = Blue,
-            )
-            Text(
-                modifier = modifier,
-                textAlign = TextAlign.Center,
-                text = coin.signedChangePrice.toString(),
-                fontSize = 12.sp,
-                color = Blue,
-            )
-        }
+            coin = coin,
+        )
         Text(
             modifier = modifier.weight(0.3f),
             textAlign = TextAlign.Center,
             text = coin.accTradePrice.toString() + "백만",
             fontSize = 12.sp,
             color = Gray,
+        )
+    }
+}
+
+@Composable
+fun CoinNameSector(
+    modifier: Modifier = Modifier,
+    coin: UpBitCoin,
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            modifier = modifier,
+            textAlign = TextAlign.Center,
+            text = coin.koreanName,
+            fontSize = 14.sp,
+            color = Gray,
+        )
+        Text(
+            modifier = modifier,
+            textAlign = TextAlign.Center,
+            text = coin.englishName,
+            fontSize = 10.sp,
+            color = DarkGray,
+        )
+    }
+}
+
+@Composable
+fun CoinChangeSector(
+    modifier: Modifier = Modifier,
+    coin: UpBitCoin,
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            modifier = modifier,
+            textAlign = TextAlign.Center,
+            text = coin.signedChangeRate.toString() + "%",
+            fontSize = 12.sp,
+            color = Blue,
+        )
+        Text(
+            modifier = modifier,
+            textAlign = TextAlign.Center,
+            text = coin.signedChangePrice.toString(),
+            fontSize = 12.sp,
+            color = Blue,
         )
     }
 }
