@@ -7,4 +7,7 @@
     <string name="account">입출금</string>
     <string name="more">더보기</string>
     <string name="exchange_search_hint">코인명/심볼 검색</string>
+    <string name="krw">KRW</string>
+    <string name="btc">BTC</string>
+    <string name="usdt">USDT</string>
 </resources>
