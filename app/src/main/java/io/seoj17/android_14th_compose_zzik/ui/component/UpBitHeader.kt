@@ -45,7 +45,7 @@ fun UpBitHeader(
             text = title,
             color = Gray,
             fontSize = 20.sp,
-            textAlign = TextAlign.Start
+            textAlign = TextAlign.Start,
         )
 
         if (showActionButton) {
@@ -56,7 +56,7 @@ fun UpBitHeader(
                 Icon(
                     painter = painterResource(id = actionIcon),
                     contentDescription = "actionButton",
-                    tint = Gray
+                    tint = Gray,
                 )
             }
         }

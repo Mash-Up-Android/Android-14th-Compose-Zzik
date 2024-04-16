@@ -17,7 +17,7 @@ fun History() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        UpBitHeader(title = "투자내역")
+        UpBitHeader(title = stringResource(R.string.history))
         Text(
             modifier = Modifier.align(alignment = Alignment.Center),
             text = stringResource(R.string.history)

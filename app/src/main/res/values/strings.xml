@@ -6,4 +6,5 @@
     <string name="history">투자내역</string>
     <string name="account">입출금</string>
     <string name="more">더보기</string>
+    <string name="exchange_search_hint">코인명/심볼 검색</string>
 </resources>

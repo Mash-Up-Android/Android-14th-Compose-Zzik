@@ -17,10 +17,10 @@ fun Account() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        UpBitHeader(title = "입출금")
+        UpBitHeader(title = stringResource(R.string.account))
         Text(
             modifier = Modifier.align(alignment = Alignment.Center),
-            text = stringResource(R.string.account)
+            text = stringResource(R.string.account),
         )
     }
 }

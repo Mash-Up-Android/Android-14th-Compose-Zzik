@@ -18,12 +18,12 @@ fun More() {
         modifier = Modifier.fillMaxSize(),
     ) {
         UpBitHeader(
-            title = "더보기",
+            title = stringResource(R.string.more),
             showActionButton = true,
         )
         Text(
             modifier = Modifier.align(alignment = Alignment.Center),
-            text = stringResource(R.string.more)
+            text = stringResource(R.string.more),
         )
     }
 }

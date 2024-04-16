@@ -17,7 +17,7 @@ fun Info() {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        UpBitHeader(title = "코인정보")
+        UpBitHeader(title = stringResource(R.string.info))
         Text(
             modifier = Modifier.align(alignment = Alignment.Center),
             text = stringResource(R.string.info)
