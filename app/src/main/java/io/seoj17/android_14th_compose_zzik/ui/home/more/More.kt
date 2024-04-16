@@ -15,9 +15,12 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.Android14thComposeZzikTheme
 @Composable
 fun More() {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
-        UpBitHeader(title = "더보기")
+        UpBitHeader(
+            title = "더보기",
+            showActionButton = true,
+        )
         Text(
             modifier = Modifier.align(alignment = Alignment.Center),
             text = stringResource(R.string.more)
