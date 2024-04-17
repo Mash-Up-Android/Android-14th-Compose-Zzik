@@ -20,9 +20,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.navArgument
+import io.seoj17.android_14th_compose_zzik.ui.detail.Detail
 import io.seoj17.android_14th_compose_zzik.ui.home.account.Account
 import io.seoj17.android_14th_compose_zzik.ui.home.exchange.Exchange
 import io.seoj17.android_14th_compose_zzik.ui.home.history.History
@@ -133,7 +136,11 @@ fun BottomNavGraph(navController: NavHostController) {
         startDestination = BottomNavItem.Exchange.route
     ) {
         composable(BottomNavItem.Exchange.route) {
-            Exchange()
+            Exchange(
+                onDetailClick = { title ->
+                    navController.navigate("detail/$title")
+                }
+            )
         }
         composable(BottomNavItem.Info.route) {
             Info()
@@ -146,6 +153,17 @@ fun BottomNavGraph(navController: NavHostController) {
         }
         composable(BottomNavItem.More.route) {
             More()
+        }
+        composable(
+            route = "detail/{title}",
+            arguments = listOf(navArgument("title") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val title = backStackEntry.arguments?.getString("title") ?: ""
+
+            Detail(
+                title = title,
+                onBackPressed = { navController.navigateUp() }
+            )
         }
     }
 }

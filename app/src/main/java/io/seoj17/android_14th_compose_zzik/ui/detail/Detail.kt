@@ -9,13 +9,16 @@ import io.seoj17.android_14th_compose_zzik.ui.component.UpBitTopBar
 import io.seoj17.android_14th_compose_zzik.ui.theme.Android14thComposeZzikTheme
 
 @Composable
-fun Detail(title: String) {
+fun Detail(
+    title: String,
+    onBackPressed: () -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
         UpBitTopBar(
             title = title,
-            onBackButtonClick = { },
+            onBackButtonClick = { onBackPressed() },
         )
     }
 }
@@ -24,6 +27,9 @@ fun Detail(title: String) {
 @Preview
 fun DetailPreview() {
     Android14thComposeZzikTheme {
-        Detail("도지코인(DOGE/KRW)")
+        Detail(
+            "도지코인(DOGE/KRW)",
+            {},
+        )
     }
 }

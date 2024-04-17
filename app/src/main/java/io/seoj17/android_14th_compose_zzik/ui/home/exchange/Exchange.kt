@@ -41,7 +41,9 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.Red
 import io.seoj17.android_14th_compose_zzik.ui.utils.noRippleClickable
 
 @Composable
-fun Exchange() {
+fun Exchange(
+    onDetailClick: (String) -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -58,6 +60,7 @@ fun Exchange() {
         ExchangeCoinSortTab()
         ExchangeCoinList(
             coinList = coinList[selected],
+            onDetailClick = onDetailClick,
         )
     }
 }
@@ -136,7 +139,7 @@ fun ExchangeCoinSortTab(
 fun ExchangeCoinList(
     modifier: Modifier = Modifier,
     coinList: List<UpBitCoin>,
-    onClick: () -> Unit = {},
+    onDetailClick: (String) -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier.fillMaxWidth()
@@ -144,7 +147,7 @@ fun ExchangeCoinList(
         items(coinList) { coin ->
             CoinItem(
                 coin = coin,
-                onClick = onClick
+                onClick = { onDetailClick(coin.koreanName) }
             )
             Divider(
                 modifier = modifier
@@ -249,6 +252,6 @@ fun CoinItemSector(
 @Preview
 private fun ExchangePreview() {
     Android14thComposeZzikTheme {
-        Exchange()
+        Exchange({})
     }
 }
