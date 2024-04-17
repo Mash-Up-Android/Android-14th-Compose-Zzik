@@ -25,12 +25,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import io.seoj17.android_14th_compose_zzik.ui.home.account.Account
-import io.seoj17.android_14th_compose_zzik.ui.home.history.History
 import io.seoj17.android_14th_compose_zzik.ui.home.exchange.Exchange
+import io.seoj17.android_14th_compose_zzik.ui.home.history.History
 import io.seoj17.android_14th_compose_zzik.ui.home.info.Info
 import io.seoj17.android_14th_compose_zzik.ui.home.more.More
 import io.seoj17.android_14th_compose_zzik.ui.theme.BottomNav
-import io.seoj17.android_14th_compose_zzik.ui.theme.Gray
+import io.seoj17.android_14th_compose_zzik.ui.theme.DarkGray
 import io.seoj17.android_14th_compose_zzik.ui.theme.White
 
 @Composable
@@ -90,7 +90,7 @@ private fun BottomNavTab(
     currentRoute: String?,
     navController: NavHostController,
 ) {
-    val selectedColor = if (currentRoute == item.route) White else Gray
+    val selectedColor = if (currentRoute == item.route) White else DarkGray
 
     val onClick = {
         navController.navigate(item.route) {

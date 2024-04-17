@@ -1,7 +1,6 @@
 package io.seoj17.android_14th_compose_zzik.ui.home.exchange
 
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,6 +35,8 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.Android14thComposeZzikTheme
 import io.seoj17.android_14th_compose_zzik.ui.theme.Blue
 import io.seoj17.android_14th_compose_zzik.ui.theme.DarkGray
 import io.seoj17.android_14th_compose_zzik.ui.theme.Gray
+import io.seoj17.android_14th_compose_zzik.ui.theme.Red
+import io.seoj17.android_14th_compose_zzik.ui.utils.noRippleClickable
 
 @Composable
 fun Exchange() {
@@ -51,8 +53,9 @@ fun Exchange() {
                 selected = it
             },
         )
+        ExchangeCoinSortTab()
         ExchangeCoinList(
-            coinList = coinList,
+            coinList = coinList[selected],
         )
     }
 }
@@ -107,7 +110,7 @@ fun ExchangeCoinTextBox(
                 width = 2.dp,
                 color = if (isSelected) Blue else DarkGray,
             )
-            .clickable { onBoxClick(index) },
+            .noRippleClickable { onBoxClick(index) },
     ) {
         Text(
             modifier = modifier
@@ -121,6 +124,13 @@ fun ExchangeCoinTextBox(
 }
 
 @Composable
+fun ExchangeCoinSortTab(
+    modifier: Modifier = Modifier,
+) {
+
+}
+
+@Composable
 fun ExchangeCoinList(
     modifier: Modifier = Modifier,
     coinList: List<UpBitCoin>,
@@ -129,6 +139,7 @@ fun ExchangeCoinList(
     LazyColumn(
         modifier = modifier.fillMaxWidth()
     ) {
+
         items(coinList) { coin ->
             CoinItem(
                 coin = coin,
@@ -158,9 +169,11 @@ fun CoinItem(
             )
             .height(40.dp)
             .fillMaxWidth()
-            .clickable { onClick() },
+            .noRippleClickable { onClick() },
     ) {
-        CoinNameSector(
+        val color = if (coin.signedChangeRate > 0) Red else Blue
+
+        CoinItemNameSector(
             modifier = modifier.weight(0.2f),
             coin = coin,
         )
@@ -169,11 +182,12 @@ fun CoinItem(
             textAlign = TextAlign.Center,
             text = coin.tradePrice.toString(),
             fontSize = 14.sp,
-            color = Blue,
+            color = color,
         )
-        CoinChangeSector(
+        CoinItemChangeSector(
             modifier = modifier.weight(0.2f),
             coin = coin,
+            color = color,
         )
         Text(
             modifier = modifier.weight(0.3f),
@@ -186,7 +200,7 @@ fun CoinItem(
 }
 
 @Composable
-fun CoinNameSector(
+fun CoinItemNameSector(
     modifier: Modifier = Modifier,
     coin: UpBitCoin,
 ) {
@@ -212,9 +226,10 @@ fun CoinNameSector(
 }
 
 @Composable
-fun CoinChangeSector(
+fun CoinItemChangeSector(
     modifier: Modifier = Modifier,
     coin: UpBitCoin,
+    color: Color,
 ) {
     Column(
         modifier = modifier,
@@ -225,14 +240,14 @@ fun CoinChangeSector(
             textAlign = TextAlign.Center,
             text = coin.signedChangeRate.toString() + "%",
             fontSize = 12.sp,
-            color = Blue,
+            color = color,
         )
         Text(
             modifier = modifier,
             textAlign = TextAlign.Center,
             text = coin.signedChangePrice.toString(),
             fontSize = 12.sp,
-            color = Blue,
+            color = color,
         )
     }
 }
