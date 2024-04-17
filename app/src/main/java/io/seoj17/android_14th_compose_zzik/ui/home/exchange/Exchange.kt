@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -139,7 +141,6 @@ fun ExchangeCoinList(
     LazyColumn(
         modifier = modifier.fillMaxWidth()
     ) {
-
         items(coinList) { coin ->
             CoinItem(
                 coin = coin,
@@ -171,84 +172,76 @@ fun CoinItem(
             .fillMaxWidth()
             .noRippleClickable { onClick() },
     ) {
-        val color = if (coin.signedChangeRate > 0) Red else Blue
+        val changeColor = if (coin.signedChangeRate > 0) Red else Blue
 
-        CoinItemNameSector(
-            modifier = modifier.weight(0.2f),
-            coin = coin,
+        Spacer(
+            modifier = modifier.weight(0.1f),
         )
-        Text(
+        CoinItemSector(
             modifier = modifier.weight(0.3f),
-            textAlign = TextAlign.Center,
-            text = coin.tradePrice.toString(),
-            fontSize = 14.sp,
-            color = color,
+            mainText = coin.koreanName,
+            subText = coin.englishName,
+            mainColor = Gray,
+            subColor = DarkGray,
+            alignment = Alignment.Start,
         )
-        CoinItemChangeSector(
-            modifier = modifier.weight(0.2f),
-            coin = coin,
-            color = color,
-        )
-        Text(
+        CoinItemSector(
             modifier = modifier.weight(0.3f),
-            textAlign = TextAlign.Center,
-            text = coin.accTradePrice.toString() + "백만",
-            fontSize = 12.sp,
-            color = Gray,
+            mainText = coin.tradePrice.toString(),
+            mainColor = changeColor,
+            subColor = DarkGray,
+            isSubTextVisible = false,
+            alignment = Alignment.End,
+        )
+        CoinItemSector(
+            modifier = modifier.weight(0.2f),
+            mainText = coin.signedChangeRate.toString() + "%",
+            subText = coin.accTradePrice.toString(),
+            mainColor = changeColor,
+            subColor = changeColor,
+            alignment = Alignment.End,
+        )
+        CoinItemSector(
+            modifier = modifier.weight(0.3f),
+            mainText = coin.accTradePrice.toString() + "백만",
+            mainColor = Gray,
+            subColor = DarkGray,
+            alignment = Alignment.End,
         )
     }
 }
 
 @Composable
-fun CoinItemNameSector(
+fun CoinItemSector(
     modifier: Modifier = Modifier,
-    coin: UpBitCoin,
+    mainText: String,
+    subText: String = "",
+    mainColor: Color,
+    subColor: Color = Gray,
+    isSubTextVisible: Boolean = true,
+    alignment: Alignment.Horizontal = Alignment.Start,
 ) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,
+        horizontalAlignment = alignment,
     ) {
         Text(
             modifier = modifier,
-            textAlign = TextAlign.Center,
-            text = coin.koreanName,
+            text = mainText,
+            maxLines = 1,
             fontSize = 14.sp,
-            color = Gray,
+            color = mainColor,
         )
-        Text(
-            modifier = modifier,
-            textAlign = TextAlign.Center,
-            text = coin.englishName,
-            fontSize = 10.sp,
-            color = DarkGray,
-        )
-    }
-}
-
-@Composable
-fun CoinItemChangeSector(
-    modifier: Modifier = Modifier,
-    coin: UpBitCoin,
-    color: Color,
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Text(
-            modifier = modifier,
-            textAlign = TextAlign.Center,
-            text = coin.signedChangeRate.toString() + "%",
-            fontSize = 12.sp,
-            color = color,
-        )
-        Text(
-            modifier = modifier,
-            textAlign = TextAlign.Center,
-            text = coin.signedChangePrice.toString(),
-            fontSize = 12.sp,
-            color = color,
-        )
+        if (isSubTextVisible) {
+            Text(
+                modifier = modifier,
+                text = subText,
+                maxLines = 1,
+                fontSize = 10.sp,
+                color = subColor,
+            )
+        }
     }
 }
 
