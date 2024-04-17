@@ -3,7 +3,6 @@ package io.seoj17.android_14th_compose_zzik
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,6 +31,7 @@ import io.seoj17.android_14th_compose_zzik.ui.home.more.More
 import io.seoj17.android_14th_compose_zzik.ui.theme.BottomNav
 import io.seoj17.android_14th_compose_zzik.ui.theme.DarkGray
 import io.seoj17.android_14th_compose_zzik.ui.theme.White
+import io.seoj17.android_14th_compose_zzik.ui.utils.noRippleClickable
 
 @Composable
 fun BottomNav(
@@ -104,7 +104,7 @@ private fun BottomNavTab(
 
     Column(
         modifier = modifier
-            .clickable(onClick = onClick)
+            .noRippleClickable { onClick() }
             .padding(vertical = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
