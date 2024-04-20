@@ -13,14 +13,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,10 +30,11 @@ val SearchBarHeight = 54.dp
 @Composable
 fun UpBitSearchBar(
     modifier: Modifier = Modifier,
-    hint: String,
+    text: String = "",
+    hint: String = "",
+    onTextChange: (String) -> Unit = {},
     onSearchClick: () -> Unit = {},
 ) {
-    var text by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -56,10 +52,9 @@ fun UpBitSearchBar(
                 contentDescription = "Search",
                 tint = Gray,
             )
-
             TextField(
                 value = text,
-                onValueChange = { text = it },
+                onValueChange = onTextChange,
                 modifier = modifier.weight(1f),
                 placeholder = {
                     Text(
@@ -97,7 +92,5 @@ fun UpBitSearchBar(
 fun UpBitSearchBarPreview(
 
 ) {
-    UpBitSearchBar(
-        hint = stringResource(id = R.string.exchange_search_hint),
-    )
+    UpBitSearchBar()
 }

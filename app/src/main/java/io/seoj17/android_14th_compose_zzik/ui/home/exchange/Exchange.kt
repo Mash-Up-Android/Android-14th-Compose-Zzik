@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -48,14 +49,17 @@ fun Exchange(
         modifier = Modifier.fillMaxSize()
     ) {
         var selected by rememberSaveable { mutableIntStateOf(0) }
+        var searchBarText by rememberSaveable { mutableStateOf("") }
 
         UpBitHeader(title = stringResource(R.string.exchange))
-        UpBitSearchBar(hint = stringResource(id = R.string.exchange_search_hint))
+        UpBitSearchBar(
+            hint = stringResource(id = R.string.exchange_search_hint),
+            text = searchBarText,
+            onTextChange = { searchBarText = it },
+        )
         ExchangeCoinCategory(
             selected = selected,
-            onBoxClick = {
-                selected = it
-            },
+            onBoxClick = { selected = it },
         )
         ExchangeCoinSortTab()
         ExchangeCoinList(
