@@ -5,24 +5,20 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.seoj17.android_14th_compose_zzik.R
+import io.seoj17.android_14th_compose_zzik.ui.component.UpBitButton
 import io.seoj17.android_14th_compose_zzik.ui.component.UpBitTopBar
 import io.seoj17.android_14th_compose_zzik.ui.model.UpBitCoin
 import io.seoj17.android_14th_compose_zzik.ui.theme.Android14thComposeZzikTheme
 import io.seoj17.android_14th_compose_zzik.ui.theme.Blue
-import io.seoj17.android_14th_compose_zzik.ui.theme.DarkGray
 import io.seoj17.android_14th_compose_zzik.ui.theme.Red
 import kotlin.math.abs
 
@@ -68,30 +64,22 @@ fun DetailHeader(
             .padding(horizontal = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(
-            modifier = modifier.size(20.dp),
-            onClick = { },
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_back),
-                contentDescription = "backButton",
-                tint = DarkGray,
-            )
-        }
+        UpBitButton(
+            iconId = R.drawable.ic_back,
+            size = 20,
+            onClick = {},
+            description = "backButton",
+        )
         DetailPrice(
             modifier = modifier.weight(1f),
             coin = coin,
         )
-        IconButton(
-            modifier = modifier.size(20.dp),
-            onClick = { },
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_forward),
-                contentDescription = "forwardButton",
-                tint = DarkGray,
-            )
-        }
+        UpBitButton(
+            iconId = R.drawable.ic_forward,
+            size = 20,
+            onClick = {},
+            description = "forwardButton",
+        )
     }
 }
 
