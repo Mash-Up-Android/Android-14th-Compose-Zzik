@@ -16,7 +16,7 @@ val DarkGray = Color(0xFF777777)
 val Black = Color(0xFF000000)
 
 val Background = Color(0xFF061221)
-val BottomNav = Color(0xFF07275D)
+val Navy = Color(0xFF07275D)
 val Blue = Color(0xFF124e9a)
 val Red = Color(0xFFC84A31)
 
