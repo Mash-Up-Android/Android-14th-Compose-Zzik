@@ -31,7 +31,7 @@ import io.seoj17.android_14th_compose_zzik.ui.home.exchange.Exchange
 import io.seoj17.android_14th_compose_zzik.ui.home.history.History
 import io.seoj17.android_14th_compose_zzik.ui.home.info.Info
 import io.seoj17.android_14th_compose_zzik.ui.home.more.More
-import io.seoj17.android_14th_compose_zzik.ui.theme.BottomNav
+import io.seoj17.android_14th_compose_zzik.ui.theme.Navy
 import io.seoj17.android_14th_compose_zzik.ui.theme.DarkGray
 import io.seoj17.android_14th_compose_zzik.ui.theme.White
 import io.seoj17.android_14th_compose_zzik.ui.utils.noRippleClickable
@@ -46,7 +46,7 @@ fun BottomNav(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(BottomNav),
+            .background(Navy),
         verticalAlignment = Alignment.CenterVertically
     ) {
         BottomNavTab(
