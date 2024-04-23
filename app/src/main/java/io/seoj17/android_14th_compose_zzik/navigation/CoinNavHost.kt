@@ -25,11 +25,19 @@ fun CoinNavHost(
         startDestination = startDestination.route,
     ) {
         composable(route = CoinScreen.Home.route) {
-            CoinHomeScreen()
+            CoinHomeScreen(
+                onDetailClick = {
+                    navHostController.navigate(CoinScreen.Detail.route)
+                }
+            )
         }
         
         composable(route = CoinScreen.Detail.route) {
-            CoinDetailScreen()
+            CoinDetailScreen(
+                onBackClick = {
+                    navHostController.popBackStack()
+                }
+            )
         }
         
         composable(route = CoinScreen.CoinInfo.route) {
