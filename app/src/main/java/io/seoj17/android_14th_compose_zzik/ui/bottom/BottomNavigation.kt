@@ -14,12 +14,15 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import io.seoj17.android_14th_compose_zzik.model.CoinScreen
+import io.seoj17.android_14th_compose_zzik.ui.theme.CoinMainColor
 
 @Composable
 fun BottomNavigation(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
 ) {
+    val navBackStackEntry by navHostController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
     val navItem = listOf(
         CoinScreen.Home,
         CoinScreen.CoinInfo,
@@ -28,36 +31,45 @@ fun BottomNavigation(
         CoinScreen.MyPage,
     )
     
-    NavigationBar {
-        val navBackStackEntry by navHostController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-        
-        navItem.forEach { screen ->
-            NavigationBarItem(
-                label = {
-                    Text(text = screen.label)
-                },
-                icon = {
-                    Icon(
-                        painter = painterResource(id = screen.iconResourceId),
-                        contentDescription = null,
-                    )
-                },
-                selected = currentRoute == screen.route,
-                onClick = {
-                    navHostController.navigate(screen.route) {
-                        popUpTo(navHostController.graph.findStartDestination().id) {
-                            saveState = true
+    if (currentRoute != CoinScreen.Detail.route) {
+        NavigationBar(
+            containerColor = CoinMainColor,
+        ) {
+            navItem.forEach { screen ->
+                NavigationBarItem(
+                    label = {
+                        Text(text = screen.label)
+                    },
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = screen.iconResourceId),
+                            contentDescription = null,
+                        )
+                    },
+                    selected = currentRoute == screen.route,
+                    onClick = {
+                        navHostController.navigate(screen.route) {
+                            popUpTo(
+                                navHostController
+                                    .graph
+                                    .findStartDestination()
+                                    .id,
+                            ) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    unselectedTextColor = Color.Gray,
-                    selectedTextColor = Color.White,
-                ),
-            )
+                    },
+                    colors = NavigationBarItemDefaults.colors(
+                        unselectedTextColor = Color.Gray,
+                        unselectedIconColor = Color.Gray,
+                        selectedIconColor = Color.White,
+                        selectedTextColor = Color.White,
+                        indicatorColor = CoinMainColor,
+                    ),
+                )
+            }
         }
     }
 }
