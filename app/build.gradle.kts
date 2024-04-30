@@ -69,4 +69,7 @@ dependencies {
 
     // navigation
     implementation(libs.navigation.compose)
+
+    // pager
+    implementation(libs.pager)
 }

@@ -1,13 +1,9 @@
 package io.seoj17.android_14th_compose_zzik.ui.home.compose
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
-import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,10 +12,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import io.seoj17.android_14th_compose_zzik.ui.common.BitTextField
 import io.seoj17.android_14th_compose_zzik.ui.common.BitTopBar
+import io.seoj17.android_14th_compose_zzik.ui.common.BitUnitTabPager
 import io.seoj17.android_14th_compose_zzik.ui.theme.BitBackgroundColor
 import io.seoj17.android_14th_compose_zzik.ui.theme.BitWhiteColor
 
@@ -71,6 +67,7 @@ private fun HomeContent(
             fontSize = 16,
             maxLength = 100,
         )
-        Divider(modifier = Modifier.padding(6.dp), color = BitWhiteColor)
+        Divider(modifier = Modifier.padding(8.dp), color = BitWhiteColor)
+        BitUnitTabPager(modifier = Modifier.padding(start = 10.dp))
     }
 }
