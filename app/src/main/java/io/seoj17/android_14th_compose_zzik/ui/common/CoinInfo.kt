@@ -20,11 +20,11 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.BitWhiteColor
 
 @Composable
 fun CoinInfo(
-    coinInfo: CoinInfoUiModel,
+    coinInfoUiModel: CoinInfoUiModel,
     onCoinInfoClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val textColor = if (coinInfo.changePrice < 0) {
+    val textColor = if (coinInfoUiModel.changeRate < 0) {
         BitBlueColor
     } else {
         BitRedColor
@@ -39,10 +39,10 @@ fun CoinInfo(
             ) { onCoinInfoClicked() },
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        CoinName(name = coinInfo.name, code = coinInfo.code)
-        Text(text = coinInfo.tradePrice, color = textColor)
-        Text(text = coinInfo.changePriceToString(coinInfo.changePrice), color = textColor)
-        Text(text = coinInfo.accTradePrice)
+        CoinName(name = coinInfoUiModel.name, code = coinInfoUiModel.code)
+        Text(text = coinInfoUiModel.tradePrice, color = textColor)
+        Text(text = coinInfoUiModel.changeRateToString(coinInfoUiModel.changeRate), color = textColor)
+        Text(text = coinInfoUiModel.accTradePrice)
     }
 }
 
