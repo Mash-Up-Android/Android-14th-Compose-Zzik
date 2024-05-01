@@ -53,7 +53,7 @@ fun BitUnitTabPager(
     }
     Divider(modifier = Modifier.padding(top = 8.dp), color = BitWhiteColor.copy(alpha = 0.5f))
 
-    val coinInfo = CoinInfoUiModel(name = "비트코인", code = "BTC/KRW", tradePrice = "90,000,000", changePrice = -10.0, accTradePrice = "700,000백만")
+    val coinInfo = CoinInfoUiModel(name = "비트코인", code = "BTC/KRW", tradePrice = "90,000,000", changeRate = -10.0, changePrice = -1000.5, accTradePrice = "700,000백만")
     val coinInfoList = List(10) { _ -> coinInfo }
 
     HorizontalPager(state = pagerState) { _ ->
@@ -64,7 +64,7 @@ fun BitUnitTabPager(
                 when (idx) {
                     0 -> CoinInfoTitle()
                     else -> CoinInfo(
-                        coinInfo = coinInfoList[idx - 1],
+                        coinInfoUiModel = coinInfoList[idx - 1],
                         onCoinInfoClicked = {
                             onCoinInfoClicked(coinInfoList[idx - 1].code)
                         }

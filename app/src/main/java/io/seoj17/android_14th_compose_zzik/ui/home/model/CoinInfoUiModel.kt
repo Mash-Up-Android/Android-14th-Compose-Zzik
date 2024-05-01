@@ -4,8 +4,9 @@ data class CoinInfoUiModel(
     val name: String,
     val code: String,
     val tradePrice: String,
+    val changeRate: Double,
     val changePrice: Double,
     val accTradePrice: String,
 ) {
-    fun changePriceToString(changePrice: Double) = "$changePrice%"
+    fun changeRateToString(changeRate: Double) = "$changeRate%"
 }
