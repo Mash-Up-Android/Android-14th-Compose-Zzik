@@ -67,7 +67,7 @@ private fun HomeContent(
             fontSize = 16,
             maxLength = 100,
         )
-        Divider(modifier = Modifier.padding(8.dp), color = BitWhiteColor)
+        Divider(modifier = Modifier.padding(vertical = 8.dp), color = BitWhiteColor)
         BitUnitTabPager(modifier = Modifier.padding(start = 10.dp))
     }
 }
