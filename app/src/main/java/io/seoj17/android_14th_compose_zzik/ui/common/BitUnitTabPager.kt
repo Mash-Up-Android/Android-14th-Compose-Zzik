@@ -27,6 +27,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BitUnitTabPager(
+    onCoinInfoClicked: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val tabData = listOf("KRW", "BTC", "USDT")
@@ -54,6 +55,7 @@ fun BitUnitTabPager(
 
     val coinInfo = CoinInfoUiModel(name = "비트코인", code = "BTC/KRW", tradePrice = "90,000,000", changePrice = -10.0, accTradePrice = "700,000백만")
     val coinInfoList = List(10) { _ -> coinInfo }
+
     HorizontalPager(state = pagerState) { _ ->
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(
@@ -61,7 +63,12 @@ fun BitUnitTabPager(
             ) {idx ->
                 when (idx) {
                     0 -> CoinInfoTitle()
-                    else -> CoinInfo(coinInfo = coinInfoList[idx - 1])
+                    else -> CoinInfo(
+                        coinInfo = coinInfoList[idx - 1],
+                        onCoinInfoClicked = {
+                            onCoinInfoClicked(coinInfoList[idx - 1].code)
+                        }
+                    )
                 }
                 Divider(color = BitWhiteColor.copy(alpha = 0.2f))
             }

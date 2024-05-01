@@ -1,13 +1,15 @@
 package io.seoj17.android_14th_compose_zzik.ui.common
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,6 +21,7 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.BitWhiteColor
 @Composable
 fun CoinInfo(
     coinInfo: CoinInfoUiModel,
+    onCoinInfoClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val textColor = if (coinInfo.changePrice < 0) {
@@ -29,7 +32,11 @@ fun CoinInfo(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) { onCoinInfoClicked() },
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         CoinName(name = coinInfo.name, code = coinInfo.code)
