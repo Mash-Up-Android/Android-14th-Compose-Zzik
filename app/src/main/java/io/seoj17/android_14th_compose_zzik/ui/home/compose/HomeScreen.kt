@@ -21,15 +21,18 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.BitWhiteColor
 
 @Composable
 fun HomeRoute(
+    onCoinInfoClicked: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     HomeScreen(
-        modifier = modifier
+        modifier = modifier,
+        onCoinInfoClicked = onCoinInfoClicked
     )
 }
 
 @Composable
 private fun HomeScreen(
+    onCoinInfoClicked: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -48,13 +51,15 @@ private fun HomeScreen(
         containerColor = BitBackgroundColor
     ) { innerPadding ->
         HomeContent(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
+            onCoinInfoClicked = onCoinInfoClicked
         )
     }
 }
 
 @Composable
 private fun HomeContent(
+    onCoinInfoClicked: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -68,6 +73,9 @@ private fun HomeContent(
             maxLength = 100,
         )
         Divider(modifier = Modifier.padding(vertical = 8.dp), color = BitWhiteColor)
-        BitUnitTabPager(modifier = Modifier.padding(start = 10.dp))
+        BitUnitTabPager(
+            modifier = Modifier.padding(start = 10.dp),
+            onCoinInfoClicked = onCoinInfoClicked
+        )
     }
 }

@@ -9,7 +9,9 @@ import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.CoinInfoRoute
 import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.DepositWithdrawalRoute
 import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.InvestmentDetailsRoute
 import io.seoj17.android_14th_compose_zzik.ui.excepthome.compose.MoreDetailsRoute
+import io.seoj17.android_14th_compose_zzik.ui.home.compose.DetailRoute
 import io.seoj17.android_14th_compose_zzik.ui.home.compose.HomeRoute
+import io.seoj17.android_14th_compose_zzik.ui.home.navigation.homeGraph
 
 @Composable
 fun BitNavHost(
@@ -22,9 +24,7 @@ fun BitNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(route = TopLevelDestination.HOME.route) {
-            HomeRoute()
-        }
+        homeGraph(navController = navController)
         composable(route = TopLevelDestination.COIN_INFO.route) {
             CoinInfoRoute()
         }
