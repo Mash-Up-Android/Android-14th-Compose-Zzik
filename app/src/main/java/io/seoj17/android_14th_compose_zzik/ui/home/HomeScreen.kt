@@ -1,4 +1,4 @@
-package io.seoj17.android_14th_compose_zzik.ui.home.compose
+package io.seoj17.android_14th_compose_zzik.ui.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import io.seoj17.android_14th_compose_zzik.ui.common.BitTextField
 import io.seoj17.android_14th_compose_zzik.ui.common.BitTopBar
 import io.seoj17.android_14th_compose_zzik.ui.common.BitUnitTabPager
@@ -21,8 +22,9 @@ import io.seoj17.android_14th_compose_zzik.ui.theme.BitWhiteColor
 
 @Composable
 fun HomeRoute(
+    modifier: Modifier = Modifier,
     onCoinInfoClicked: (String) -> Unit,
-    modifier: Modifier = Modifier
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     HomeScreen(
         modifier = modifier,

@@ -1,4 +1,4 @@
-package io.seoj17.android_14th_compose_zzik.ui.home.compose
+package io.seoj17.android_14th_compose_zzik.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

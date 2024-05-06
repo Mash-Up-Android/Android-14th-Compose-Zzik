@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.dagger.hilt)
 }
 
@@ -71,6 +72,7 @@ dependencies {
 
     // navigation
     implementation(libs.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
 
     // pager
     implementation(libs.pager)
@@ -81,6 +83,7 @@ dependencies {
 
     // network
     implementation(libs.bundles.network)
+    ksp(libs.moshi.code.gen)
 
     // coroutine
     implementation(libs.bundles.coroutine)

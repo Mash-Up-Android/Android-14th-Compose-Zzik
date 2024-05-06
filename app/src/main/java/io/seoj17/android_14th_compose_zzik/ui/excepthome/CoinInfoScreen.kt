@@ -1,4 +1,4 @@
-package io.seoj17.android_14th_compose_zzik.ui.excepthome.compose
+package io.seoj17.android_14th_compose_zzik.ui.excepthome
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
