@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -72,4 +74,14 @@ dependencies {
 
     // pager
     implementation(libs.pager)
+
+    // hilt
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
+    // network
+    implementation(libs.bundles.network)
+
+    // coroutine
+    implementation(libs.bundles.coroutine)
 }
