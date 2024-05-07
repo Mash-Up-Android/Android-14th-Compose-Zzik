@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface BitService {
 
-    @GET("v1/market/all")
+    @GET("/market/all")
     suspend fun getMarketCodeList(
         @Query("isDetails") isDetails: Boolean = false
     ): List<MarketCodeResponse>

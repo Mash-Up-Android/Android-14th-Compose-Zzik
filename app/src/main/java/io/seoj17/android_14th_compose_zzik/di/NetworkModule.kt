@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.seoj17.android_14th_compose_zzik.data.BitService
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -39,7 +40,15 @@ class NetworkModule {
     @Singleton
     fun providesBitService(retrofit: Retrofit): BitService = retrofit.create(BitService::class.java)
 
+    @Provides
+    @Singleton
+    fun providesRequest(): Request =
+        Request.Builder()
+            .url(WEBSOCKET_URL)
+            .build()
+
     companion object {
-        private const val BASE_URL = "https://api.upbit.com/"
+        private const val BASE_URL = "https://api.upbit.com/v1"
+        private const val WEBSOCKET_URL = "wss://api.upbit.com/websocket/v1"
     }
 }
