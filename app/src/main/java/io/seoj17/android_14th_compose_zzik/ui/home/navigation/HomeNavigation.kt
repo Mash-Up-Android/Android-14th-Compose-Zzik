@@ -5,8 +5,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import io.seoj17.android_14th_compose_zzik.navigation.BitNavigationRoute
-import io.seoj17.android_14th_compose_zzik.ui.home.compose.DetailRoute
-import io.seoj17.android_14th_compose_zzik.ui.home.compose.HomeRoute
+import io.seoj17.android_14th_compose_zzik.ui.home.DetailRoute
+import io.seoj17.android_14th_compose_zzik.ui.home.HomeRoute
 
 fun NavGraphBuilder.homeGraph(
     navController: NavController
