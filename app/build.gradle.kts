@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -71,5 +72,9 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
     implementation(libs.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.coil.compose)
+    implementation(libs.bundles.coroutine)
+    implementation(libs.bundles.network)
+    implementation(libs.compose.livedata)
 }
